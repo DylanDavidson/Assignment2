@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 	public float movementSpeed = 2f;
 
-	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.RightArrow)) {
 				transform.Rotate (0f, 0f, -2.5f);
