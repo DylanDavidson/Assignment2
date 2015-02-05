@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454110}
   - 212: {fileID: 21254110}
+  - 58: {fileID: 5860020}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -28,6 +29,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!58 &5860020
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154110}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .159999996
+  m_Center: {x: 0, y: 0}
 --- !u!212 &21254110
 SpriteRenderer:
   m_ObjectHideFlags: 1
