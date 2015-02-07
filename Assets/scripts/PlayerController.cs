@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public float movementSpeed = 2f;
 	public int numWalls = 0;
 	public int numAgents = 0;
+	public List<GameObject> adjacentAgents = new List<GameObject>();
 
 	void Update () 
 	{
@@ -35,17 +36,10 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "agent") 
 		{
+			adjacentAgents.Add(col.gameObject);
 			numAgents++;
 
 		}
-
-		if (col.gameObject.tag == "wall") 
-		{
-			numWalls++;
-		}
-
-		print ("numAgents: " + numAgents + "\n");
-		print ("numWalls: " + numWalls + "\n");
 
 	}
 
@@ -53,16 +47,9 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "agent") 
 		{
+			adjacentAgents.Remove(col.gameObject);
 			numAgents--;
 
 		}
-
-		if (col.gameObject.tag == "wall") 
-		{
-			numWalls--;
-		}
-
-		print ("numAgents: " + numAgents + "\n");
-		print ("numWalls: " + numWalls + "\n");
 	}
 }
