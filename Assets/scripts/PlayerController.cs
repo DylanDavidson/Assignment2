@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 	public float movementSpeed = 2f;
-	private int numWalls = 0;
-	private int numAgents = 0;
+	public int numWalls = 0;
+	public int numAgents = 0;
 
 	void Update () 
 	{

@@ -441,6 +441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
+  numWalls: 0
+  numAgents: 0
 --- !u!114 &1360293769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,6 +619,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1718912192}
   - 58: {fileID: 1718912193}
+  - 23: {fileID: 1718912194}
+  - 114: {fileID: 1718912195}
   m_Layer: 0
   m_Name: CircleTrigger
   m_TagString: Untagged
@@ -647,6 +651,37 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: .75
   m_Center: {x: 0, y: 0}
+--- !u!23 &1718912194
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718912191}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!114 &1718912195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718912191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca1c2a24c295a347b197b70d107456d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1863813077
 GameObject:
   m_ObjectHideFlags: 0
