@@ -29,7 +29,13 @@ public class DebugController : MonoBehaviour {
 			adjacentAgents.text += "Distance: ";
 			adjacentAgents.text += Vector3.Distance(transform.position, g.transform.position).ToString("F2");
 			Vector3 targetDir = g.transform.position - transform.position;
-			adjacentAgents.text += ", Heading: " + Vector3.Angle(targetDir, transform.up).ToString("F2") + "°\n";
+			float dotProduct = Vector3.Dot(transform.up, targetDir);
+			float determinant = transform.up.x * targetDir.y - transform.up.y * targetDir.x;
+			float angle = Mathf.Atan2(determinant, dotProduct) * Mathf.Rad2Deg;
+			if(angle < 0) {
+				angle = 180f + (180f + angle);
+			}
+			adjacentAgents.text += ", Heading: " + angle.ToString("F2") + "°\n";
 		}
 	}
 
