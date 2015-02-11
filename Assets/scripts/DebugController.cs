@@ -8,7 +8,12 @@ public class DebugController : MonoBehaviour {
 	public Text position;
 	public Text heading;
 	public Text adjacentAgents;
+	public Text pieSlice;
 	public PlayerController playerController;
+	public int numUp = 0;
+	public int numLeft = 0;
+	public int numRight = 0;
+	public int numDown = 0;
 
 	void Start() {
 		playerController = gameObject.GetComponent<PlayerController> ();
@@ -23,8 +28,20 @@ public class DebugController : MonoBehaviour {
 		heading.text = "Heading: " + degrees + "°";	
 	}
 
+	void updatePieSliceSensor() {
+		string text = "Up: " + numUp + "/5\n";
+		text += "Left: " + numLeft + "/5\n";
+		text += "Right: " + numRight + "/5\n";
+		text += "Down: " + numDown + "/5\n";
+		pieSlice.text = text;
+	}
+
 	void updateAdjacentSensor() {
 		adjacentAgents.text = "";
+		numUp = 0;
+		numRight = 0;
+		numLeft = 0;
+		numDown = 0;
 		foreach (GameObject g in playerController.adjacentAgents) {
 			adjacentAgents.text += "Distance: ";
 			adjacentAgents.text += Vector3.Distance(transform.position, g.transform.position).ToString("F2");
@@ -36,7 +53,16 @@ public class DebugController : MonoBehaviour {
 				angle = 180f + (180f + angle);
 			}
 			adjacentAgents.text += ", Heading: " + angle.ToString("F2") + "°\n";
+			if(angle < 45 && angle > 0 || angle > 315 && angle < 360)
+				numUp += 1;
+			else if(angle > 30 && angle < 120)
+				numLeft += 1;
+			else if(angle > 120 && angle < 210)
+				numDown += 1;
+			else
+				numRight += 1;
 		}
+		updatePieSliceSensor ();
 	}
 
 	void Update () {

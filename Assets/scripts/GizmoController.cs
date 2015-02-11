@@ -18,6 +18,10 @@ public class GizmoController : MonoBehaviour {
 			Gizmos.color = Color.yellow;
 		else
 			Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere (transform.position, 0.75f);
+		Vector3 rot = transform.rotation.eulerAngles;
+		rot.z = rot.z + 45;
+		Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(rot), transform.lossyScale);
+		Gizmos.matrix = rotationMatrix;
+		Gizmos.DrawWireSphere (Vector3.zero, 0.75f);
 	}
 }
