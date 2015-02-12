@@ -55,18 +55,18 @@ public class WallSensor : MonoBehaviour {
 		{
 			distanceRight = Vector2.Distance(rightSensor.point, transform.position);
 			Debug.Log("Right Distance: " + distanceRight);
-			Debug.DrawRay (transform.position, rightVector * distanceRight, Color.green);
+			Debug.DrawRay (transform.position, rightVector * distanceRight, Color.red);
 		} else {
-			Debug.DrawRay (transform.position, rightVector * range, Color.green);
+			Debug.DrawRay (transform.position, rightVector * range, Color.red);
 		}
 
 		if(leftSensor.collider != null)
 		{
 			distanceLeft = Vector2.Distance(leftSensor.point, transform.position);
 			Debug.Log("Left Distance: " + distanceLeft);
-			Debug.DrawRay (transform.position, leftVector * distanceLeft, Color.green);
+			Debug.DrawRay (transform.position, leftVector * distanceLeft, Color.red);
 		} else {
-			Debug.DrawRay (transform.position, leftVector * range, Color.green);
+			Debug.DrawRay (transform.position, leftVector * range, Color.red);
 		}
 
 	}
