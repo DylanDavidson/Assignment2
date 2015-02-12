@@ -8,15 +8,25 @@ public class WallSensor : MonoBehaviour {
 	private float distanceRight;
 	private float distanceLeft;
 	private Vector2 rightVector;
+	private Vector2 leftVector;
 	private RaycastHit2D forwardSensor;
 	private RaycastHit2D rightSensor;
+	private RaycastHit2D leftSensor;
 
 	//private Quaternion leftAngle = Quaternion.AngleAxis(-15, new Vector3(0, 1, 0));
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 
-		rightVector = new Vector2(transform.up.y * Mathf.Tan(45), transform.up.y).normalized;
+		rightVector = new Vector2((transform.up.x * Mathf.Cos(-45 * Mathf.Deg2Rad)) - 
+		                          (transform.up.y * Mathf.Sin(-45 * Mathf.Deg2Rad)), 
+		                          (transform.up.x * Mathf.Sin(-45 * Mathf.Deg2Rad)) + 
+		                          (transform.up.y * Mathf.Cos(-45 * Mathf.Deg2Rad)));
+
+		leftVector = new Vector2((transform.up.x * Mathf.Cos(45 * Mathf.Deg2Rad)) - 
+		                         (transform.up.y * Mathf.Sin(45 * Mathf.Deg2Rad)), 
+		                         (transform.up.x * Mathf.Sin(45 * Mathf.Deg2Rad)) + 
+		                         (transform.up.y * Mathf.Cos(45 * Mathf.Deg2Rad)));
 
 		forwardSensor = Physics2D.Raycast (transform.position,
 		                                   transform.up, 
@@ -27,17 +37,18 @@ public class WallSensor : MonoBehaviour {
 		                                 rightVector,
 		                                 range, 
 		                                 1 << LayerMask.NameToLayer("Walls"));
-		/*
-		RaycastHit2D leftSensor = Physics2D.Raycast (transform.position,
-		                                             leftAngle,
-		                                             range, 
-		                                             1 << LayerMask.NameToLayer("Walls"));*/
+
+		leftSensor = Physics2D.Raycast (transform.position,
+		                                leftVector,
+		                                range, 
+		                                1 << LayerMask.NameToLayer("Walls"));
+
 		if (forwardSensor.collider != null) {
 			distanceForward = Vector2.Distance(forwardSensor.point, transform.position);
 			Debug.Log ("Forward Distance: " + distanceForward);
 			Debug.DrawRay (transform.position, transform.up * distanceForward, Color.red);
 		} else {
-			Debug.DrawRay (transform.position, transform.up * 1f, Color.red);
+			Debug.DrawRay (transform.position, transform.up * range, Color.red);
 		}
 
 		if(rightSensor.collider != null)
@@ -46,15 +57,17 @@ public class WallSensor : MonoBehaviour {
 			Debug.Log("Right Distance: " + distanceRight);
 			Debug.DrawRay (transform.position, rightVector * distanceRight, Color.green);
 		} else {
-			Debug.DrawRay (transform.position, rightVector * distanceRight, Color.green);
+			Debug.DrawRay (transform.position, rightVector * range, Color.green);
 		}
 
-		/*if(leftSensor.collider != null)
+		if(leftSensor.collider != null)
 		{
-			distanceLeft = Mathf.Abs(leftSensor.point.y - transform.position.y);
+			distanceLeft = Vector2.Distance(leftSensor.point, transform.position);
 			Debug.Log("Left Distance: " + distanceLeft);
-			Debug.DrawRay (transform.position, leftAngle, Color.yellow);
-		}*/
+			Debug.DrawRay (transform.position, leftVector * distanceLeft, Color.green);
+		} else {
+			Debug.DrawRay (transform.position, leftVector * range, Color.green);
+		}
 
 	}
 }
