@@ -4,9 +4,9 @@ using System.Collections;
 public class WallSensor : MonoBehaviour {
 	
 	public float range;
-	private float distanceForward;
-	private float distanceRight;
-	private float distanceLeft;
+	public float distanceForward;
+	public float distanceRight;
+	public float distanceLeft;
 	private Vector2 rightVector;
 	private Vector2 leftVector;
 	private RaycastHit2D forwardSensor;
@@ -45,27 +45,27 @@ public class WallSensor : MonoBehaviour {
 
 		if (forwardSensor.collider != null) {
 			distanceForward = Vector2.Distance(forwardSensor.point, transform.position);
-			Debug.Log ("Forward Distance: " + distanceForward);
 			Debug.DrawRay (transform.position, transform.up * distanceForward, Color.red);
 		} else {
+			distanceForward = 1.00f;
 			Debug.DrawRay (transform.position, transform.up * range, Color.red);
 		}
 
 		if(rightSensor.collider != null)
 		{
 			distanceRight = Vector2.Distance(rightSensor.point, transform.position);
-			Debug.Log("Right Distance: " + distanceRight);
 			Debug.DrawRay (transform.position, rightVector * distanceRight, Color.red);
 		} else {
+			distanceRight = 1.00f;
 			Debug.DrawRay (transform.position, rightVector * range, Color.red);
 		}
 
 		if(leftSensor.collider != null)
 		{
 			distanceLeft = Vector2.Distance(leftSensor.point, transform.position);
-			Debug.Log("Left Distance: " + distanceLeft);
 			Debug.DrawRay (transform.position, leftVector * distanceLeft, Color.red);
 		} else {
+			distanceLeft = 1.00f;
 			Debug.DrawRay (transform.position, leftVector * range, Color.red);
 		}
 

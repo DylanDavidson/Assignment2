@@ -9,7 +9,9 @@ public class DebugController : MonoBehaviour {
 	public Text heading;
 	public Text adjacentAgents;
 	public Text pieSlice;
+	public Text wallSensors;
 	public PlayerController playerController;
+	public WallSensor wallSensor;
 	public int numUp = 0;
 	public int numLeft = 0;
 	public int numRight = 0;
@@ -17,6 +19,7 @@ public class DebugController : MonoBehaviour {
 
 	void Start() {
 		playerController = gameObject.GetComponent<PlayerController> ();
+		wallSensor = gameObject.GetComponent<WallSensor> ();
 	}
 
 	// Update is called once per frame
@@ -65,8 +68,17 @@ public class DebugController : MonoBehaviour {
 		updatePieSliceSensor ();
 	}
 
+	void updateWallSensor() {
+		string text = "Rangefinders:\n";
+		text += "Left: " + wallSensor.distanceLeft.ToString ("F2") + "\n";
+		text += "Straight: " + wallSensor.distanceForward.ToString ("F2") + "\n";
+		text += "Right: " + wallSensor.distanceRight.ToString ("F2") + "\n";
+		wallSensors.text = text;
+	}
+
 	void Update () {
 		updatePlayerPosition ();
 		updateAdjacentSensor ();
+		updateWallSensor ();
 	}
 }
