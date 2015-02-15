@@ -11,7 +11,7 @@ public class GizmoController : MonoBehaviour {
 	void OnDrawGizmos() {
 		if (playerController == null)
 						return;
-		int total = playerController.numAgents;
+		int total = playerController.adjacentAgents.Count;
 		if (total == 0)
 			Gizmos.color = Color.green;
 		else if (total < 3)

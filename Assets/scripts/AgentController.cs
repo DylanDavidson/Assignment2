@@ -24,7 +24,6 @@ public class AgentController : MonoBehaviour {
 			Collider2D collidedObj = Physics2D.OverlapPoint(v2);
 			if(collidedObj != null && collidedObj.gameObject.CompareTag("agent")) {
 				playerController.adjacentAgents.Remove(collidedObj.gameObject);
-				playerController.numAgents--;
 				Destroy(collidedObj.gameObject);
 			}
 		}

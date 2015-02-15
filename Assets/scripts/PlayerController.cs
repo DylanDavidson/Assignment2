@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 	public float movementSpeed = 2f;
-	public int numAgents = 0;
 	public List<GameObject> adjacentAgents = new List<GameObject>();
 
 	void Update () 
@@ -36,8 +35,6 @@ public class PlayerController : MonoBehaviour {
 		if (col.gameObject.tag == "agent") 
 		{
 			adjacentAgents.Add(col.gameObject);
-			numAgents++;
-
 		}
 
 	}
@@ -47,7 +44,6 @@ public class PlayerController : MonoBehaviour {
 		if (col.gameObject.tag == "agent") 
 		{
 			adjacentAgents.Remove(col.gameObject);
-			numAgents--;
 
 		}
 	}

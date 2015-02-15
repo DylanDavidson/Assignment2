@@ -529,7 +529,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  numAgents: 0
   adjacentAgents: []
 --- !u!114 &1360293769
 MonoBehaviour:
