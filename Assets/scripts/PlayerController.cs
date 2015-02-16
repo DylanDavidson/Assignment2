@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour {
 	public Light spotlight;
 	public float movementSpeed = 2f;
 	public List<GameObject> adjacentAgents = new List<GameObject>();
-	public Animation animate;
+	public Animator animate;
 
 	void Start() {
 		GameObject sprite = transform.FindChild("PlayerSprite").gameObject;
-		animate = sprite.animation;
+		animate = sprite.GetComponent<Animator>();
 	}
 
 	void Update () 
@@ -33,7 +33,10 @@ public class PlayerController : MonoBehaviour {
 			moved = true;
 
 		}
-
+		if (moved)
+			animate.Play ("walking");
+		else
+			animate.Play ("idle");
 
 		Vector3 pos = transform.position;
 		pos.z = -1;
