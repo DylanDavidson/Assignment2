@@ -22,6 +22,6 @@ public class GizmoController : MonoBehaviour {
 		rot.z = rot.z + 45;
 		Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(rot), transform.lossyScale);
 		Gizmos.matrix = rotationMatrix;
-		Gizmos.DrawWireSphere (Vector3.zero, 0.75f);
+		Gizmos.DrawWireSphere (Vector3.zero, .75f);
 	}
 }
