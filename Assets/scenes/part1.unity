@@ -3226,7 +3226,6 @@ MonoBehaviour:
   spotlight: {fileID: 1233045415}
   movementSpeed: 2
   autoMoveSpeed: 5
-  adjacentAgents: []
   target: {x: 0, y: 0, z: 0}
 --- !u!58 &1360293770
 CircleCollider2D:
