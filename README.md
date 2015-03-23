@@ -1,4 +1,4 @@
-# Assignment 1
+# Assignment 2
 This is my repository for Assignment 2 for CAP 4063
 
 ## Organization
