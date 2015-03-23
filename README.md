@@ -1,23 +1,12 @@
-# Assignment 1
-This is our repository for Assignment 1 for CAP 4063, for the Procedural Pals.
+# Assignment 2
+This is my repository for Assignment 2 for CAP 4063
 
-## Cloning the Repository
+## Organization
 
-First, open up your command prompt.
+I separated the 3 parts of the Assignment into different Unity scenes.
 
-Then, `cd` to where you want the repository.
-```
-cd Documents
-```
-Then clone the repository by running the git clone command.
-```
-git clone https://github.com/DylanDavidson/Assignment1.git
-```
+`part1.unity` has the solution to Part #1 of the assignment, which is a basic "Seek" behavior.
 
-This should add a folder in your `Documents` called `Assignment1`
+`part2.unity` uses the Unity NavMesh to implement A* pathfinding. Click once to place the player object (the skeleton), and then the second click will draw a line with the shortest path between the player and where you clicked.
 
-## Unity Version Control Setup
-
-1. Switch to `Visible Meta Files` in `Edit` → `Project Settings` → `Editor` → `Version Control Mode`
-2. Switch to `Force Text` in `Editor` → `Project Settings` → `Editor` → `Asset Serialization Mode`
-3. Save scene and project from File menu
+`part3.unity` builds upons `part2` but makes it so the player will now actually follow the shortest path to the point you clicked.
