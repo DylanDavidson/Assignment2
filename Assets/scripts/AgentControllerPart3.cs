@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AgentController : MonoBehaviour {
+public class AgentControllerPart3 : MonoBehaviour {
 	public Transform agent;
 	// Update is called once per frame
-	public PlayerController playerController;
+	public PlayerControllerPart3 playerController;
 	
 	void Start() {
-		playerController = GameObject.Find("Player").GetComponent<PlayerController> ();
+		playerController = GameObject.Find("Player").GetComponent<PlayerControllerPart3> ();
 	}
 
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			Vector3 mousePos = Input.mousePosition;
-			mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-			mousePos.z = 0;
 			playerController.target = mousePos;
 		}
 	}

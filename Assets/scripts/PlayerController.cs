@@ -5,8 +5,10 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour {
 	public Light spotlight;
 	public float movementSpeed = 2f;
+	public float autoMoveSpeed = 5f;
 	public List<GameObject> adjacentAgents = new List<GameObject>();
 	public Animator animate;
+	public Vector3 target;
 
 	void Start() {
 		GameObject sprite = transform.FindChild("PlayerSprite").gameObject;
@@ -15,6 +17,19 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () 
 	{
+		if (!target.Equals(Vector3.zero)) {
+			if(target.Equals(transform.position)) {
+				target = Vector3.zero;
+				return;
+			}
+
+			float angle = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x) * Mathf.Rad2Deg; 
+			Quaternion newRot = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+			transform.rotation = Quaternion.Lerp(transform.rotation, newRot, autoMoveSpeed * Time.deltaTime);
+			//transform.position += transform.up * 0.05f;
+			target.z = 0;
+			transform.position = Vector3.MoveTowards(transform.position, target, movementSpeed * Time.deltaTime);
+		}
 		bool moved = false;
 		if (Input.GetKey (KeyCode.RightArrow)) {
 				transform.Rotate (0f, 0f, -2.5f);
